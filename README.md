@@ -44,7 +44,7 @@ src/
 
 ### 🔗 Live Site:
 
-👉 [View Movie Search App on Vercel](https://www.google.com/search?q=https://react-movies-beta-cyan.vercel.app)
+👉 [View Movie Search App on Vercel](https://react-movies-beta-cyan.vercel.app)
 
 ---
 
@@ -72,4 +72,4 @@ src/
 
 ### 🔗 Живий сайт:
 
-👉 [Переглянути застосунок на Vercel](https://www.google.com/search?q=https://react-movies-beta-cyan.vercel.app)
+👉 [Переглянути застосунок на Vercel](https://react-movies-beta-cyan.vercel.app)
