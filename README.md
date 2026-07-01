@@ -1,77 +1,53 @@
-# React + TypeScript + Vite
+# React Movies Search App 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Сучасний, швидкий та інтерактивний застосунок для пошуку фільмів за ключовими словами, інтегрований із сервісом **The Movie Database (TMDB)**. Проєкт реалізований на базі React та TypeScript з фокусом на асинхронну роботу з API, безпечне керування DOM через портали та сувору типізацію.
 
-Currently, two official plugins are available:
+🔗 **Live Demo**
+👉 [Переглянути застосунок на Vercel](ВСТАВ_СЮДИ_ПОСИЛАННЯ_НА_ВЕРСЕЛЬ)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Стек технологій
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Core:** React 19 (або 18) & TypeScript
+- **Data Fetching:** Axios (HTTP-запити до REST API)
+- **Build Tool:** Vite
+- **Styling:** CSS Modules, modern-normalize (уніфікація стилів у різних браузерах)
+- **Notifications:** React Hot Toast
+- **Code Style:** Prettier
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 💡 Отримані навички та практичний досвід
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Цей проєкт спрямований на відпрацювання архітектурних концепцій комерційної розробки на React в умовах роботи із зовнішніми API:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Асинхронні HTTP-запити та Сервіси:** Винесення логіки взаємодії з API в ізольований сервісний шар (`movieService.ts`). Використання Axios із кастомною конфігурацією (`headers`, `Authorization: Bearer`), типізація відповідей від сервера (`AxiosResponse`) та обробка станів завантаження (`isLoading`) й помилок (`isError`).
+- **Безпечна робота зі змінними оточення (.env):** Налаштування та використання змінних оточення через префікс `VITE_TMDB_TOKEN` для захисту приватних ключів доступу API під час запитів та деплою.
+- **Form Actions та FormData:** Реалізація сучасної обробки пошукової форми через атрибут `action` у React без використання класичного логічного стану інпуту, що оптимізує рендеринг форми.
+- **Портали (React Portals):** Використання `createPortal` для рендерингу модального вікна `MovieModal` поза межами основного DOM-дерева компонента `App` (всередині `document.body`). Це гарантує незалежність модалки від стилів батьківських контейнерів (`overflow`, `z-index`).
+- **Керування Життєвим Циклом Ефектів (Side Effects & Cleanup):** Організація роботи з глобальним вікном браузера всередині `useEffect`: блокування скролу сторінки (`document.body.style.overflow = 'hidden'`) та реєстрація слухача подій клавіатури для закриття модалки по клавіші `Escape` із обов'язковим очищенням (`cleanup`) при розмонтуванні.
+- **Робота зі складним стейтом (Об'єкт замість Boolean):** Використання одного стану `selectedMovie` типу `Movie | null` замість кількох прапорців (`isOpen`). Стейт одночасно виступає і маркером умовного рендерингу модалки, і контейнером даних для обраного фільму.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Структура проєкту
 
-```
+Проєкт організовано за компонентно-ізольованим принципом. Кожен компонент повністю автономний: містить логіку, локальні типи та модульні стилі:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+src/
+├── components/
+│   ├── App/
+│   │   ├── App.tsx
+│   │   └── App.module.css
+│   ├── SearchBar/
+│   ├── MovieGrid/
+│   ├── MovieModal/
+│   ├── Loader/
+│   └── ErrorMessage/
+├── services/
+│   └── movieService.ts   # Шар для HTTP-запитів через Axios
+└── types/
+    └── movie.ts          # Глобальний інтерфейс фільму (Movie)
 ```
