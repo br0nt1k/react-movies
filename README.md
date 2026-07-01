@@ -1,39 +1,28 @@
 # React Movies Search App 🎬
 
-Сучасний, швидкий та інтерактивний застосунок для пошуку фільмів за ключовими словами, інтегрований із сервісом **The Movie Database (TMDB)**. Проєкт реалізований на базі React та TypeScript з фокусом на асинхронну роботу з API, безпечне керування DOM через портали та сувору типізацію.
+## 🌍 **International Version**
 
-🔗 **Live Demo**
-👉 [Переглянути застосунок на Vercel](ВСТАВ_СЮДИ_ПОСИЛАННЯ_НА_ВЕРСЕЛЬ)
+### 📌 Project Description
 
----
+👋 This repository showcases an interactive movie search web application integrated with **The Movie Database (TMDB) REST API**. The project focuses on asynchronous operations, secure DOM rendering via React Portals, clean application structure, and strict typing.
 
-## 🛠️ Стек технологій
+### 💻 Core Technologies & Skills:
 
-- **Core:** React 19 (або 18) & TypeScript
-- **Data Fetching:** Axios (HTTP-запити до REST API)
-- **Build Tool:** Vite
-- **Styling:** CSS Modules, modern-normalize (уніфікація стилів у різних браузерах)
-- **Notifications:** React Hot Toast
-- **Code Style:** Prettier
+- 🔧 **Core:** React & TypeScript for solid logic and component encapsulation.
+- ⚡ **Build Tool:** Vite for fast bundling and optimized development environment.
+- 🌐 **Data Fetching:** Axios with token authorization headers to communicate with external APIs securely.
+- ⭐ **Styling:** CSS Modules & modern-normalize for browser-independent styling and container safety.
+- 🚀 **Deployment:** Seamlessly hosted and deployed via Vercel with protected env variables.
 
----
+### 💡 Key Skills & Concepts Implemented:
 
-## 💡 Отримані навички та практичний досвід
+- **Asynchronous State Management:** Segregating API communication into a distinct service layer (`movieService.ts`). Correctly synchronizing data fetching timelines with component lifecycles using loading handles (`isLoading`) and global errors (`isError`).
+- **Environment Configuration (.env):** Implementing strict server-side authentication through `VITE_TMDB_TOKEN` to protect secret keys from source code visibility.
+- **Modern Form Handling:** Applying modern React `action` methods along with native `FormData` extraction instead of binding heavy controlled state to inputs.
+- **React Portals (`createPortal`):** Directing modal window outputs directly to `document.body` to bypass nested layout overflow restrictions while keeping logic bound to the React element tree.
+- **Effect Cleanup Processes:** Handling browser window events through `useEffect` by appending dynamic listeners (e.g., `Escape` key close actions) and locking target dimensions (`body` scroll blocking) with robust unmount lifecycles.
 
-Цей проєкт спрямований на відпрацювання архітектурних концепцій комерційної розробки на React в умовах роботи із зовнішніми API:
-
-- **Асинхронні HTTP-запити та Сервіси:** Винесення логіки взаємодії з API в ізольований сервісний шар (`movieService.ts`). Використання Axios із кастомною конфігурацією (`headers`, `Authorization: Bearer`), типізація відповідей від сервера (`AxiosResponse`) та обробка станів завантаження (`isLoading`) й помилок (`isError`).
-- **Безпечна робота зі змінними оточення (.env):** Налаштування та використання змінних оточення через префікс `VITE_TMDB_TOKEN` для захисту приватних ключів доступу API під час запитів та деплою.
-- **Form Actions та FormData:** Реалізація сучасної обробки пошукової форми через атрибут `action` у React без використання класичного логічного стану інпуту, що оптимізує рендеринг форми.
-- **Портали (React Portals):** Використання `createPortal` для рендерингу модального вікна `MovieModal` поза межами основного DOM-дерева компонента `App` (всередині `document.body`). Це гарантує незалежність модалки від стилів батьківських контейнерів (`overflow`, `z-index`).
-- **Керування Життєвим Циклом Ефектів (Side Effects & Cleanup):** Організація роботи з глобальним вікном браузера всередині `useEffect`: блокування скролу сторінки (`document.body.style.overflow = 'hidden'`) та реєстрація слухача подій клавіатури для закриття модалки по клавіші `Escape` із обов'язковим очищенням (`cleanup`) при розмонтуванні.
-- **Робота зі складним стейтом (Об'єкт замість Boolean):** Використання одного стану `selectedMovie` типу `Movie | null` замість кількох прапорців (`isOpen`). Стейт одночасно виступає і маркером умовного рендерингу модалки, і контейнером даних для обраного фільму.
-
----
-
-## 📂 Структура проєкту
-
-Проєкт організовано за компонентно-ізольованим принципом. Кожен компонент повністю автономний: містить логіку, локальні типи та модульні стилі:
+### 📂 Project Structure:
 
 ```text
 src/
@@ -47,7 +36,40 @@ src/
 │   ├── Loader/
 │   └── ErrorMessage/
 ├── services/
-│   └── movieService.ts   # Шар для HTTP-запитів через Axios
+│   └── movieService.ts   # Shipped Axios request configurations
 └── types/
-    └── movie.ts          # Глобальний інтерфейс фільму (Movie)
+    └── movie.ts          # Unified global movie interface
+
 ```
+
+### 🔗 Live Site:
+
+👉 [View Movie Search App on Vercel](https://www.google.com/search?q=https://react-movies-beta-cyan.vercel.app)
+
+---
+
+## 🇺🇦 **Ukrainian Version**
+
+### 📌 Опис проєкту
+
+👋 Цей репозиторій демонструє інтерактивний вебзастосунок для пошуку фільмів, інтегрований із **REST API сервісу The Movie Database (TMDB)**. Проєкт орієнтований на відпрацювання асинхронних операцій, безпечний рендеринг модальних вікон через React Portals, чисту архітектуру та сувору типізацію.
+
+### 💻 Основні Технології та Навички:
+
+- 🔧 **Core:** React & TypeScript для надійної логіки та інкапсуляції компонентів.
+- ⚡ **Build Tool:** Vite для швидкої збірки та оптимізації розробки.
+- 🌐 **Data Fetching:** Axios із авторизаційними заголовками токена для безпечного зв'язку з зовнішніми API.
+- ⭐ **Стилізація:** CSS Modules та modern-normalize для кросбраузерності та ізоляції стилів компонентів.
+- 🚀 **Розгортання:** Хостинг та деплой успішно налаштовані через Vercel із захищеними змінними оточення.
+
+### 💡 Отримані навички та практичний досвід:
+
+- **Асинхронне управління станом:** Винесення комунікації з API в окремий сервісний шар (`movieService.ts`). Чітка синхронізація запитів із життєвим циклом компонентів через стани завантаження (`isLoading`) та обробку помилок (`isError`).
+- **Безпечна робота з оточенням (.env):** Реалізація авторизації запитів за допомогою змінної `VITE_TMDB_TOKEN`, що виключає зберігання приватних ключів у відкритому коді репозиторію.
+- **Сучасна обробка форм:** Застосування атрибута `action` та об'єкта `FormData` для збору даних з форми замість важких контрольованих інпутів, що оптимізує рендеринг.
+- **Портали (React Portals):** Рендеринг модалки `MovieModal` напряму в `document.body` за допомогою `createPortal`, що гарантує незалежність вікна від обмежуючих стилів батьківських контейнерів.
+- **Очищення ефектів (Cleanup):** Робота з全局ними подіями браузера через `useEffect`: блокування прокрутки фону сторінки та додавання слухача клавіші `Escape` із обов'язковим видаленням під час розмонтування.
+
+### 🔗 Живий сайт:
+
+👉 [Переглянути застосунок на Vercel](https://www.google.com/search?q=https://react-movies-beta-cyan.vercel.app)
